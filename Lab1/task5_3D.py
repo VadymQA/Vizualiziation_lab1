@@ -10,35 +10,26 @@ Z = np.array([[29, 51, 59, 478, 93, 244, 420, 510, 575, 625],
 y_labels = np.array(['De', 'Fr', 'Uk', 'Ua'])
 x_labels = np.array(['1900', '1913', '1929', '1938', '1950', '1960', '1970', '1980', '1990', '2000'])
 
-
-# координати барів
-xpos, ypos = np.meshgrid(np.arange(Z.shape[1]), np.arange(Z.shape[0]))
-xpos = xpos.flatten()
-ypos = ypos.flatten()
-zpos = np.zeros_like(xpos)
-
-
-# розміри барів
-dx = 0.75 * np.ones_like(zpos)
+x, y = np.meshgrid(np.arange(Z.shape[1]), np.arange(Z.shape[0]))
+x = x.flatten()
+y = y.flatten()
+z = np.zeros_like(x)
+dx = 0.75 * np.ones_like(z)
 dy = dx.copy()
 dz = Z.flatten()
 
 #додано зміщення що б ось була по центру
-ypos = np.add(ypos, -0.5 * dy)
-
+y = np.add(y, -0.5 * dy)
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
 
-
-# задаємо кожному бару свій колір
 colors = ['red', 'gray', 'blue', 'yellow']
 for i, country in enumerate(y_labels):
     start = i * len(x_labels)
     end = (i + 1) * len(x_labels)
-    ax.bar3d(xpos[start:end], ypos[start:end], zpos[start:end], dx[start:end], dy[start:end], dz[start:end],
+    ax.bar3d(x[start:end], y[start:end], z[start:end], dx[start:end], dy[start:end], dz[start:end],
              color=colors[i])
-
 
 ax.set_xticks(np.arange(len(x_labels)))
 ax.set_yticks(np.arange(len(y_labels)))
