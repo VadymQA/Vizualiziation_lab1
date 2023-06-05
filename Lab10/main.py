@@ -17,12 +17,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.random_projection import SparseRandomProjection
 from time import time
 
-
-# digits = load_digits(n_class=6)
-# X, y = digits.data, digits.target
-# n_samples, n_features = X.shape
-# n_neighbors = 15
-
 iris = load_iris()
 X, y = iris.data, iris.target
 n_samples, n_features = X.shape

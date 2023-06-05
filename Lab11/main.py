@@ -48,7 +48,7 @@ plt.plot(sorted_s, 'ro-', linewidth=2)
 print("s standart      " + str(sorted_s))
 plt.title('Графік власних значень від їх номеру (стандарт)')
 
-# Без нормалізації
+# Без стандартизації
 u1, s1, vh1 = np.linalg.svd(X)
 sorted_s1 = np.sort(s1)[::-1]
 plt.figure()
@@ -89,7 +89,6 @@ for color, i, target_name in zip(colors, [0, 1, 2], target_names):
     plt.scatter(X_res[y == i, 0], X_res[y == i, 1], color=color, label=target_name)
 plt.legend(loc='best', shadow=False, scatterpoints=1)
 plt.title('Iris data після зворотного перетворення')
-# plt.show()
 
 
 # суму всіх власних значень
@@ -119,7 +118,6 @@ for i in range(min(X.shape)):
 #зворотне перетворення
 X_res1 = u1.dot(s_d_matrix1).dot(vh1)
 
-
 plt.figure()
 for color, i, target_name in zip(colors, [0, 1, 2], target_names):
     plt.scatter(X_res1[y == i, 0], X_res1[y == i, 1], color=color, label=target_name)
@@ -143,5 +141,3 @@ for value in sorted_s1_values:
 print(f"Мінімальне значення розміру простору d1: {d1}")
 
 plt.show()
-
-
